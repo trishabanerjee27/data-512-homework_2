@@ -118,6 +118,10 @@ To address these disparities, future projects could:
 - Incentivize contributions from underrepresented regions.
 - Collaborate with local Wikipedia chapters to help balance representation.
 
+
+## Implications for Wikipedia and Global Society
+The findings from this analysis reveal a clear bias in English Wikipedia toward some nations with greater internet access. Countries with more active Wikipedia contributors and better digital infrastructure, enjoy significantly higher representation and article quality compared to others. This discrepancy isn't solely a reflection of Wikipedia but proves the broader digital divide that affects access to and creation of information across the internet.
+
 ## Conclusion
 
 This project revealed significant challenges in working with large datasets and highlighted the importance of maintaining data consistency, accuracy, and transparency. The key takeaway is that data scraping methods should be improved and more thoroughly documented to ensure that any future data collection can follow the same well-defined pattern. A clear and standardized documentation process would allow researchers to avoid introducing new biases when combining or processing data from multiple sources.
