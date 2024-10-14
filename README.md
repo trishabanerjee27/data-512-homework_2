@@ -39,15 +39,6 @@ DATA-512-HOMEWORK_2
   
 - **Population Dataset**: Data containing population information from the Population Reference Bureau, with hierarchical regions (continents and subregions) to categorize countries.
 
-## References
-
-A code example developed by Dr. David W. McDonald for use in DATA 512, a course in the UW MS Data Science degree program was referred to. This code is provided under the [Creative Commons](https://creativecommons.org) [CC-BY license](https://creativecommons.org/licenses/by/4.0/). Revision 1.2 - September 16, 2024.
-
-## More Details on API Usage
-
-An example illustrating how to access page info data using the [MediaWiki REST API for the EN Wikipedia](https://www.mediawiki.org/wiki/API:Main_page) can be found here. This example shows how to request summary 'page info' for a single article page. The API documentation, [API:Info](https://www.mediawiki.org/wiki/API:Info), covers additional details that may be helpful when trying to use or understand this example.
-
-
 
 ## Methodology
 
@@ -131,3 +122,18 @@ Moreover, data cleaning is an essential part of any data science workflow. Discr
 Another important consideration is the choice of the appropriate unit system when calculating metrics like articles-per-capita. Since population values were provided in millions, it was essential to adjust calculations to avoid misleadingly small or inflated numbers. Researchers need to carefully assess their unit choices, as failing to do so can lead to incorrect interpretations of results.
 
 Overall, this project has underscored the importance of standardization, thorough data documentation, and attention to detail in data preprocessing. Without these practices, subsequent analyses may suffer from biases, misinterpretations, or inaccuracies. A strong foundation of well-cleaned and well-documented data is critical to ensuring that any insights drawn are meaningful, reproducible, and fair. In the long term, improving the data collection and processing pipeline will lead to more accurate and representative analyses, especially when dealing with complex global datasets like Wikipedia articles.
+
+## References
+
+- A code example developed by Dr. David W. McDonald for use in DATA 512, a course in the UW MS Data Science degree program was referred to. This code is provided under the [Creative Commons](https://creativecommons.org) [CC-BY license](https://creativecommons.org/licenses/by/4.0/). Revision 1.2 - September 16, 2024.
+- Wikipedia API: https://www.mediawiki.org/wiki/API:Main_page
+- ORES API Documentation: https://www.mediawiki.org/wiki/ORES
+- Population Data Source: United Nations Population Database (August 2024)
+
+## More Details on API Usage
+
+An example illustrating how to access page info data using the [MediaWiki REST API for the EN Wikipedia](https://www.mediawiki.org/wiki/API:Main_page) can be found here. This example shows how to request summary 'page info' for a single article page. The API documentation, [API:Info](https://www.mediawiki.org/wiki/API:Info), covers additional details that may be helpful when trying to use or understand this example.
+
+## License
+This project is licensed under the [MIT License](LICENSE).
+
