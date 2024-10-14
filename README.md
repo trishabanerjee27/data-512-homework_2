@@ -12,9 +12,7 @@ The project is structured to analyze potential biases in global Wikipedia conten
 
 ## Folder Structure
 
-
-## Folder Structure
-
+```
 DATA-512-HOMEWORK_2
 │
 ├── code
@@ -32,7 +30,7 @@ DATA-512-HOMEWORK_2
 │
 ├── LICENSE
 └── README.md
-
+```
 
 
 ## Data Sources
@@ -40,6 +38,16 @@ DATA-512-HOMEWORK_2
 - **Wikipedia Politicians Dataset**: A list of Wikipedia article pages related to politicians from various countries, including country names, article URLs, revision IDs, and ORES-predicted article quality scores.
   
 - **Population Dataset**: Data containing population information from the Population Reference Bureau, with hierarchical regions (continents and subregions) to categorize countries.
+
+## References
+
+A code example developed by Dr. David W. McDonald for use in DATA 512, a course in the UW MS Data Science degree program was referred to. This code is provided under the [Creative Commons](https://creativecommons.org) [CC-BY license](https://creativecommons.org/licenses/by/4.0/). Revision 1.2 - September 16, 2024.
+
+## More Details on API Usage
+
+An example illustrating how to access page info data using the [MediaWiki REST API for the EN Wikipedia](https://www.mediawiki.org/wiki/API:Main_page) can be found here. This example shows how to request summary 'page info' for a single article page. The API documentation, [API:Info](https://www.mediawiki.org/wiki/API:Info), covers additional details that may be helpful when trying to use or understand this example.
+
+
 
 ## Methodology
 
@@ -51,15 +59,24 @@ The project began with cleaning the Wikipedia politicians dataset and expanding 
 
 Using the ORES API, we retrieved quality predictions for each Wikipedia article about a politician. The quality ratings provided by ORES range from "FA" (featured article) to "Stub" (low quality). Articles classified as either "FA" or "GA" were considered "high quality." Articles that couldn't be scored were logged in the `ores_error_log.txt` file.
 
-### 3. Calculating Per Capita Metrics
+### 3. Calling the MediaWiki API to Retrieve Page Information
+
+For retrieving current article metadata such as revision IDs, the [MediaWiki REST API](https://www.mediawiki.org/wiki/API:Main_page) was used. This allowed us to ensure that the articles had the latest version of the page for accurate quality assessments. Detailed documentation can be found in [API:Info](https://www.mediawiki.org/wiki/API:Info). We made the API requests for each article page title to retrieve the most up-to-date revision information before fetching ORES quality predictions.
+
+### 4. Merging the Datasets
+
+After cleaning both the Wikipedia politicians dataset and the population dataset, we performed a merge operation using the country field as the key. This merge was done using an inner join to ensure that only countries appearing in both datasets were included. Unmatched countries were logged in the `wp_countries-no_match.txt` file to document any entries that could not be merged.
+
+
+### 5. Calculating Per Capita Metrics
 
 We calculated two key metrics:
 - **Total Articles per Capita**: The number of Wikipedia articles about politicians for each country, normalized by population (in millions).
 - **High-Quality Articles per Capita**: The number of "high quality" articles (as defined by ORES) for each country, normalized by population.
 
-We also aggregated these metrics on a regional level, ensuring that countries were assigned to their closest region.
+We also aggregated these metrics on a **regional level**, ensuring that countries were assigned to their closest region.
 
-### 4. Ranking Results
+### 6. Ranking Results
 
 The following tables were produced based on the calculated metrics:
 - **Top 10 Countries by Coverage**: The countries with the highest total articles per capita.
@@ -69,13 +86,13 @@ The following tables were produced based on the calculated metrics:
 - **Geographic Regions by Total Articles per Capita**: A ranked list of regions by total article coverage.
 - **Geographic Regions by High-Quality Articles per Capita**: A ranked list of regions by high-quality article coverage.
 
-### 5. Logging Errors and Missing Data
+### 7. Logging Errors and Missing Data
 
 For each article where ORES couldn't provide a quality score, we logged the article's title and revision ID in `ores_error_log.txt`. We also calculated and reported the error rate for missing ORES predictions. Here the error rate is 0.11%, which is acceptable given the standard threshold of 1%.
 
 ## Results
 
-The final results from the analysis, including the rankings of countries and regions by coverage and article quality, were saved in `wp_politicians_by_country.csv`. This file includes the country, region, population, article title, revision ID, and article quality for each politician included in the analysis.
+The final results from the analysis, including the country, region, population (in millions), article_title, revision_id, ariticle_quality were saved in `wp_politicians_by_country.csv`.
 
 ## Research Implications
 
@@ -88,10 +105,6 @@ Before beginning this analysis, we anticipated a few types of bias inherent in t
 2. **Country Name Mismatches**: Inconsistencies in country names between the two datasets (e.g., Guinea-Bissau, China) required manual aggregation. Some discrepancies, like "Korea," where we had separate North and South Korea entries, posed challenges that could not be resolved as it would introduce new bias. Thus, these were excluded from the analysis.
 
 3. **Merging Bias**: As expected, merging datasets led to significant data loss due to unmatched entries. Poor data maintenance exacerbated this, as many countries were filtered out during the merge.
-
-### Quality Bias
-
-High-quality articles were disproportionately focused on politicians from wealthier, English-speaking countries. This suggests a systemic bias where underrepresented countries not only had fewer articles but also lower-quality articles.
 
 ### Geographic Disparities
 
