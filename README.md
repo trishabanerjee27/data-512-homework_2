@@ -1,6 +1,4 @@
-# data-512-homework_2
-Homework 2 repo for DATA 512
-
+# Analysis of Wikipedia Articles on Political Figures
 
 # README: Analysis of Wikipedia Articles on Political Figures
 
@@ -13,7 +11,7 @@ The project is structured to analyze potential biases in global Wikipedia conten
 ## Folder Structure
 
 ```
-DATA-512-HOMEWORK_2
+WIKIPEDIA_ARTICLES_ANALYSIS
 │
 ├── code
 │   └── code.ipynb
