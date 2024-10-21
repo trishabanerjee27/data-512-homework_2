@@ -1,5 +1,3 @@
-# Analysis of Wikipedia Articles on Political Figures
-
 # README: Analysis of Wikipedia Articles on Political Figures
 
 ## Overview
